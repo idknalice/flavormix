@@ -12,7 +12,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
             <Link href="/" className="text-xl font-bold">
-              MeuJogo
+              FlavorMix
             </Link>
           </div>
 
@@ -22,11 +22,11 @@ export default function Navbar() {
               <Link href="/" className="hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium">
                 Home
               </Link>
-              <Link href="/about" className="hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium">
-                About
+              <Link href="/sobre" className="hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium">
+                Sobre Nós
               </Link>
-              <Link href="/recipes" className="hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium">
-                Recipes
+              <Link href="/login" className="hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium">
+                Login
               </Link>
             </div>
           </div>
@@ -50,10 +50,10 @@ export default function Navbar() {
             Home
           </Link>
           <Link href="/about" className="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-700">
-            About
+            Sobre Nós
           </Link>
-          <Link href="/recipes" className="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-700">
-            Recipes
+          <Link href="/login" className="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-700">
+            Login
           </Link>
         </div>
       )}
