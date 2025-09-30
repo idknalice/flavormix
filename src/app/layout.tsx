@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Inter } from "next/font/google"; // Inter foi adicionado aqui
 import "./globals.css";
-import Navbar from "@/components/Navbar";
 
 // Importação de fontes personalizadas
 const geistSans = Geist({
@@ -30,7 +29,6 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className={`${geistSans.variable} ${geistMono.variable}`}>
       <body className={inter.className}>
-        <Navbar />
         <main>{children}</main>
       </body>
     </html>
