@@ -63,20 +63,20 @@ export default function TelaInicial() {
         <h3 className="text-2xl font-bold text-[#6B2C1A] mb-4">Receitas</h3>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          {/* Card 1 */}
+          {/* Card 1 - Ovos Mexidos */}
           <div className="bg-white rounded-xl shadow p-4 flex flex-col items-center text-center">
             <Image src="/ovos.jpg" alt="Ovos Mexidos" width={150} height={150} />
             <h4 className="mt-4 text-lg font-bold text-[#6B2C1A]">Ovos Mexidos</h4>
             <p className="text-sm text-gray-600">Ovos, manteiga e sal a gosto.</p>
             <button
-              onClick={() => router.push("/login")}
+              onClick={() => router.push("/ovosmexidos")}
               className="mt-3 px-4 py-2 bg-[#6B2C1A] text-white rounded-lg hover:bg-[#8A3A22] transition"
             >
               Cozinhar
             </button>
           </div>
 
-          {/* Card 2 */}
+          {/* Card 2 - Misto Quente */}
           <div className="bg-white rounded-xl shadow p-4 flex flex-col items-center text-center">
             <Image src="/misto.png" alt="Misto Quente" width={150} height={150} />
             <h4 className="mt-4 text-lg font-bold text-[#6B2C1A]">Misto Quente</h4>
@@ -91,7 +91,7 @@ export default function TelaInicial() {
             </button>
           </div>
 
-          {/* Card 3 */}
+          {/* Card 3 - Batata Frita */}
           <div className="bg-white rounded-xl shadow p-4 flex flex-col items-center text-center">
             <Image src="/batata.png" alt="Batata Frita" width={150} height={150} />
             <h4 className="mt-4 text-lg font-bold text-[#6B2C1A]">Batata Frita</h4>
@@ -103,7 +103,7 @@ export default function TelaInicial() {
               Cozinhar
             </button>
           </div>
-        </div>
+        </div>  
       </section>
     </div>
   );

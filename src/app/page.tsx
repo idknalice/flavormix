@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import { useRouter } from "next/navigation";
 
 export default function Home() {
@@ -12,7 +12,7 @@ export default function Home() {
         className="w-32 h-32 mb-12"
       />
       <button
-        onClick={() => router.push("/telainicial")}
+        onClick={() => router.push("/login")}
         className="px-8 py-3 bg-[#ff9b3b] text-white font-bold rounded-full shadow-lg hover:bg-[#ffa65c] transition"
       >
         INICIAR EXPERIMENTO

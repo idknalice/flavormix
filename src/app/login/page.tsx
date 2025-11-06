@@ -9,8 +9,7 @@ export default function AuthPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // aqui você poderia validar os dados ou chamar API
-    router.push("/telainicial"); // redireciona para tela inicial
+    router.push("/telainicial"); // tela inicial
   };
 
   return (
