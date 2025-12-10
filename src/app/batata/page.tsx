@@ -2,11 +2,11 @@
 'use client';
 
 import React, { useState } from "react";
-import { useRouter } from "next/navigation"; // ADICIONADO
+import { useRouter } from "next/navigation"; // ADICIONEI
 import Image from "next/image";
 
 export default function Home() {
-  const router = useRouter(); // ADICIONADO
+  const router = useRouter(); // ADICIONEI
   const [screen, setScreen] = useState<"game" | "wit">("game");
   const [currentIngredient, setCurrentIngredient] = useState<string | null>(null);
   const [step, setStep] = useState(0);
@@ -20,9 +20,9 @@ export default function Home() {
 
   const correctOrder = ["oleo", "batataCrua", "fritar", "escorrer", "prato", "sal"];
 
-  // ATUALIZADO: Redireciona para /telainicial
+  // MODIFIQUEI: Agora redireciona para a tela inicial do site
   const goToHomeScreen = () => {
-    router.push("/telainicial");
+    router.push("/telainicial"); // Redireciona para a página inicial do seu site
   };
 
   const handleAnimation = (callback: () => void) => {

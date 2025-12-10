@@ -1,15 +1,53 @@
-// src/pages/index.tsx
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { useAuth } from "@/hooks/useAuth";
 
 export default function AuthPage() {
   const [modo, setModo] = useState<"login" | "cadastro">("login");
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: ""
+  });
+  const [loading, setLoading] = useState(false);
+  
   const router = useRouter();
+  const { login } = useAuth();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    router.push("/telainicial"); // tela inicial
+    setLoading(true);
+
+    try {
+      // Simular processo de autenticação
+      await new Promise(resolve => setTimeout(resolve, 1000));
+
+      // Criar dados do usuário
+      const userData = {
+        id: Date.now().toString(),
+        name: formData.name || "Usuário FlavorMix",
+        email: formData.email || "usuario@flavormix.com"
+      };
+
+      // Fazer login
+      login(userData);
+      
+      // Redirecionar para tela inicial
+      router.push("/telainicial");
+      
+    } catch (error) {
+      console.error('Erro no login:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
   };
 
   return (
@@ -27,37 +65,50 @@ export default function AuthPage() {
         </h2>
 
         <form onSubmit={handleSubmit} className="space-y-4">
-          <input
-            type="text"
-            placeholder="Nome"
-            className="w-full px-4 py-2 rounded-full bg-[#7a2010] text-white placeholder-gray-300 focus:outline-none"
-          />
-
           {modo === "cadastro" && (
             <input
-              type="email"
-              placeholder="Email"
-              className="w-full px-4 py-2 rounded-full bg-[#7a2010] text-white placeholder-gray-300 focus:outline-none"
+              name="name"
+              type="text"
+              placeholder="Nome"
+              value={formData.name}
+              onChange={handleChange}
+              className="w-full px-4 py-2 rounded-full bg-[#7a2010] text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-[#ff9b3b]"
             />
           )}
 
           <input
+            name="email"
+            type="email"
+            placeholder="Email"
+            value={formData.email}
+            onChange={handleChange}
+            className="w-full px-4 py-2 rounded-full bg-[#7a2010] text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-[#ff9b3b]"
+          />
+
+          <input
+            name="password"
             type="password"
             placeholder="Senha"
-            className="w-full px-4 py-2 rounded-full bg-[#7a2010] text-white placeholder-gray-300 focus:outline-none"
+            value={formData.password}
+            onChange={handleChange}
+            className="w-full px-4 py-2 rounded-full bg-[#7a2010] text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-[#ff9b3b]"
           />
 
           <button
             type="submit"
-            className="w-full py-2 rounded-full bg-[#3d0f07] text-white font-bold"
+            disabled={loading}
+            className="w-full py-2 rounded-full bg-[#3d0f07] text-white font-bold hover:bg-[#5b1f0e] disabled:opacity-50 transition"
           >
-            {modo === "login" ? "Entrar" : "Criar"}
+            {loading ? "Processando..." : modo === "login" ? "Entrar" : "Criar"}
           </button>
         </form>
 
         <button
-          onClick={() => setModo(modo === "login" ? "cadastro" : "login")}
-          className="mt-4 text-[#6b1b0e] font-semibold"
+          onClick={() => {
+            setModo(modo === "login" ? "cadastro" : "login");
+            setFormData({ name: "", email: "", password: "" });
+          }}
+          className="mt-4 text-[#6b1b0e] font-semibold hover:text-[#8b2b1e] transition"
         >
           {modo === "login" ? "Criar nova conta" : "Já tenho conta"}
         </button>
